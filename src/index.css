@@ -8,6 +8,7 @@
 }
 
 body {
+  padding: 2rem 0;
   background-image: linear-gradient(to right, rgb(55, 7, 109), rgb(223, 161, 28));
 }
 
@@ -15,26 +16,25 @@ body {
   margin: 0 auto;
   width: 35%;
   background-color: white;
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 10px;
+  box-shadow: 2px 6px 10px 4px rgb(41, 41, 41);
 }
 
 .output {
   display: flex;
   flex-direction: column;
   align-items: end;
-  line-height: 1.4rem;
-  font-size: 1.2rem;
+  line-height: 1.8rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 1px;
   width: 98%;
   padding: 1rem;
   color: white;
   background-color: black;
   margin: 1rem auto 1.5rem auto;
-  border-radius: 10px;
-}
-
-.output p {
-  font-size: 0.8rem;
+  border-radius: 3px;
 }
 
 .buttons-grid {

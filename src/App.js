@@ -2,38 +2,46 @@ import { useState } from "react"
 
 function App() {
   const [calc, setCalc] = useState("")
-  const [result, setResult] = useState("")
 
   const operators = ['/', '*', '-', '+', '=', '.']
 
   const updateCalc = (value) => {
 
     if (
-      operators.includes(value) && result === "" ||
+      operators.includes(value) && calc === "" ||
       operators.includes(value) && operators.includes(calc.slice(-1))
     ) {
       return
     }
 
     setCalc(calc + value)
+  }
 
-    setResult(calc)
+  const calculate = () => {
+    setCalc(eval(calc.toString()) + ' ')
   }
 
   const clearOutput = () => {
     setCalc("")
-    setResult("")
+  }
+
+  const deleteCharacter = () => {
+    if (calc == "") {
+      return
+    } 
+
+    const newOutput = calc.slice(0, -1)
+    setCalc(newOutput)
   }
 
   return (
     <div className="container">
       <div className="output">
-        { result ? <p>{calc}</p> : ''}
-        { calc || "0"}
+        { calc ? <p>{calc}</p> : "0"}
       </div>
       <div className="buttons-grid">
         <button onClick={() => clearOutput()} className="span-2">AC</button>
-        <button>DEL</button>
+        <button onClick={deleteCharacter}>DEL</button>
         <button onClick={() => updateCalc("/")}>÷</button>
         <button onClick={() => updateCalc("7")}>7</button>
         <button onClick={() => updateCalc("8")}>8</button>
@@ -49,7 +57,7 @@ function App() {
         <button onClick={() => updateCalc("+")}>+</button>
         <button onClick={() => updateCalc("0")} className="span-2">0</button>
         <button onClick={() => updateCalc(".")}>.</button>
-        <button>=</button>
+        <button onClick={calculate}>=</button>
       </div>
     </div>
   );
